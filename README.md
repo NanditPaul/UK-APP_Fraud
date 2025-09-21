@@ -25,9 +25,10 @@ The purpose is to demonstrate **data cleaning, SQL querying, dashboard developme
 - **GitHub** → Documentation, scripts, portfolio sharing
 - 
 ## ⚠️ Transparency Statement
-UK Transaction level fraud data is hard to find. Financial transaction and fraud records are *highly sensitiive* (privacy, security, competitive risks). 
-Regulators (PSR, FCA, UK Finance) typically release aggregated stats, not row-level data (by month, fraud type, bank, etc.). Raw datasets are usually restricted to approved researchers under strict agreements. (e.g. via-application, secure environment).
 This dataset is synthetic, transaction-level data created to replicate patterns of UK Authorized Push Payment (APP) fraud as reported by the Payment Systems Regulator (PSR) and UK Finance. 
+UK Transaction level fraud data is hard to find. Financial transaction and fraud records are *highly sensitive* (privacy, security, competitive risks). 
+Regulators (PSR, FCA, UK Finance) typically release aggregated stats, not row-level data (by month, fraud type, bank, etc.). Raw datasets are usually restricted to approved researchers under strict agreements. (e.g. via-application, secure environment).
+
 While the individual transactions are not real, the dataset is structured to enable realistic data cleaning, analysis, and visualization exercises. 
 The techniques demonstrated here - SQL transformations, fraud analytics, and dashboard development - can be applied directly to real financial datasets once access is available. 
 
