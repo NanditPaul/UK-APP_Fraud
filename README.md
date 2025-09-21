@@ -35,5 +35,7 @@ The techniques demonstrated here - SQL transformations, fraud analytics, and das
 ---
 ⭐ *This project is part of my ongoing effort to combine 11+ years of banking experience with modern data analytics skills to stay relevant in the age of AI.*
 
+## 📂 Repository Structure
+
 
 
