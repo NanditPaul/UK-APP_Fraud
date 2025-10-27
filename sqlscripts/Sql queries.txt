@@ -1,0 +1,120 @@
+# Checking total rows 
+SELECT count(*) as total_rows
+FROM `practice-projects-17042025.app_fraud.app_fraud`
+# View top few rows 
+SELECT *
+FROM `practice-projects-17042025.app_fraud.app_fraud`
+LIMIT 10
+# Checking distinct Fraud Type 
+select fraud_type, count(*) as num_rows
+from `practice-projects-17042025.app_fraud.app_fraud`
+group by fraud_type
+order by num_rows DESC
+#Checking null data
+SELECT
+  SUM(CASE WHEN transaction_date IS NULL Then 1 ELSE 0 END) as missing_txn,
+  SUM(CASE WHEN amount_gbp IS NULL Then 1 ELSE 0 END) as missing_amount,
+  SUM(CASE WHEN fraud_type IS NULL THEN 1 Else 0 End) as missing_fraud_type,
+  SUM(CASE WHEN reimbursement_status IS NULL THEN 1 Else 0 END) missing_reimb_stat
+FROM practice-projects-17042025.app_fraud.app_fraud
+
+# Basic Summary Stat
+SELECT 
+  min(amount_gbp) as min_amount,
+  max(amount_gbp) as max_amount,
+  ROUND(avg(amount_gbp),2) as avg_amount
+FROM practice-projects-17042025.app_fraud.app_fraud
+
+# Check monthwise transaction volume
+SELECT 
+  FORMAT_DATE('%Y-%m', DATE(transaction_date)) as Month,
+  count(*) as num_transactions
+FROM practice-projects-17042025.app_fraud.app_fraud
+GROUP BY month
+ORDER BY month
+# Check fraud transaction stat - percentage of fraud is minimum
+SELECT
+  fraud_flag,
+  count(*) as num_txn,
+  ROUND(Count(*)*100 / SUM(Count(*)) OVER()) as pct_fraud 
+  
+FROM practice-projects-17042025.app_fraud.app_fraud
+GROUP BY fraud_flag
+order by num_txn DESC
+# Average amount by fruad type and channel type
+SELECT 
+  fraud_type as fraud_type,
+  channel as channel_type,
+  round(avg(amount_gbp), 2) as avg_amount,
+  count(*) as num_txn
+FROM practice-projects-17042025.app_fraud.app_fraud
+GROUP BY channel, fraud_type
+order by num_txn DESC
+
+# Check null values
+SELECT
+countif(transaction_id is null) as missing_txn_id,
+countif(transaction_date is null) as missing_txn_date,
+countif(amount_gbp is null) as missing_amount,
+countif(fraud_flag is null) as missing_fraud_flas,
+countif(fraud_type is null) as missing_fraud_type,
+countif(claim_id is null) as missing_claim_id,
+countif(closed_within_5days is null) as missing_closed_flag,
+from practice-projects-17042025.app_fraud.app_fraud
+
+# Check duplicate transaction
+Select transaction_id, count(*) as duplicate_txn,
+from practice-projects-17042025.app_fraud.app_fraud
+group by transaction_id
+having duplicate_txn > 1
+
+#Check invalid amounts
+Select *
+From `practice-projects-17042025.app_fraud.app_fraud`
+where amount_gbp < 0
+
+# check if claim closure took place before the transaction
+Select transaction_id, claim_closed_date, transaction_date, 
+From `practice-projects-17042025.app_fraud.app_fraud`
+where claim_closed_date < transaction_date
+
+# Validate category values (any unexpected labelling)
+select distinct customer_type
+from `practice-projects-17042025.app_fraud.app_fraud`
+
+select distinct fraud_type
+from practice-projects-17042025.app_fraud.app_fraud
+
+select distinct channel
+from practice-projects-17042025.app_fraud.app_fraud
+
+# Creating clean table
+create or replace table practice-projects-17042025.app_fraud.app_fraud_clean as 
+
+SELECT
+  `amount_gbp`,
+  `channel`,
+  `claim_closed_date`,
+  `claim_id`,
+  `customer_type`,
+  `fraud_flag`,
+  `fraud_type`,
+  `reimbursed_amount_gbp`,
+  `transaction_date`,
+  `transaction_id`,
+  `avg_amount_last_7days`,
+  `beneficiary_bank`,
+  `beneficiary_country`,
+  `closed_within_5days`,
+  `data_source`,
+  `device_type`,
+  `reimbursement_status`,
+  `transaction_hour`,
+  `tx_count_last_7days`
+FROM
+  `practice-projects-17042025.app_fraud.app_fraud` ;
+
+
+#
+
+
