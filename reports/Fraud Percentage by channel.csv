@@ -1,0 +1,5 @@
+channel,total_txn,numbe_of_fraud,pct_fraud
+Online,39813,1171,2.94
+Mobile,16745,310,1.85
+Phone,5466,63,1.15
+In-person,4676,17,0.36

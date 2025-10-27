@@ -1,0 +1,6 @@
+beneficiary_country,total_txn,fraud_txn,pct_fraud
+DE,2065,55,2.66
+FR,1969,52,2.64
+IN,2689,68,2.53
+US,3257,77,2.36
+UK,56720,1309,2.31
