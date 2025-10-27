@@ -23,6 +23,15 @@ The purpose is to demonstrate **data cleaning, SQL querying, dashboard developme
 - **BigQuery (SQL)** → Data cleaning, validation, aggregation  
 - **Power BI** → Dashboards and visualization  
 - **GitHub** → Documentation, scripts, portfolio sharing
+
+## 📊 Key Insights
+**Online & Mobile Channels** Account for 95% of all APP fraud cases. 
+**Fraud Peaks** Fraud spikes in March, May, and September, possibly linked to tax season transactions, spring/summer travel spending, and post-holiday payment surges, when fraudsters exploit higher transaction volumes and relaxed customer vigilance. 
+**Resolution Lag:** Online fraud claims take 1.3× longer to close than in-person.  
+**Reimbursement Gap:** Only ~60% of losses are reimbursed. 
+**High-Risk Destinations:** Few countries show disproportionate fraud rate — targeted monitoring required. 
+
+These insights help financial institutions prioritize fraud prevention strategies, improve claim-handling speed, and identify emerging risk corridors.
 - 
 ## ⚠️ Transparency Statement
 This dataset is synthetic, transaction-level data created to replicate patterns of UK Authorized Push Payment (APP) fraud as reported by the Payment Systems Regulator (PSR) and UK Finance. 
